@@ -1,0 +1,78 @@
+
+<p>
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+</p>
+
+
+
+<form [formGroup]="profileForm" class="form-container">
+  <mat-card> 
+    <mat-card-header>
+      <mat-card-title>Profile Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="full-width">
+            <input formControlName="firstName" matInput placeholder="Firt name">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="full-width">
+            <input formControlName="lastName" matInput placeholder="Last name">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-form-field class="full-width">
+            <textarea formControlName="address" matInput placeholder="Address"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 top-padding">
+          <mat-form-field class="full-width" appearence="fill">
+            <mat-label>Select DOB</mat-label>
+            <input formControlName="dob" matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <mat-radio-group formControlName="gender" class="margin-left">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Message</mat-label>
+      <input matInput value="Save Form" #message>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Action</mat-label>
+      <input matInput value="undo" #action>
+    </mat-form-field>
+
+    <mat-card-actions>
+      <button mat-stroked-button (click)="openSnackBar(message.value, action.value)">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
